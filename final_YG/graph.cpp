@@ -2049,7 +2049,7 @@ int main() {
 	}
 	
 	pop_mat(inputString, q);//유동인구 저장
-	//print_mat();
+	print_mat();
 
 	inFile.close();
 
@@ -2212,10 +2212,10 @@ int main() {
 				}
 			}
 			for (int i = 0; i < MAX_stair; i++) {
-				if (elevator_tmp[i][0].substr(2, 1) == "5" && elevator_tmp[i][0].substr(0, 1) == input_start.substr(0, 1)) {
-					middle5 = elevator_tmp[i][0];
-					input_middle5_coordinate[0][0] = stof(elevator_tmp[i][5]);
-					input_middle5_coordinate[0][1] = stof(elevator_tmp[i][6]);
+				if (stair_tmp[i][0].substr(2, 1) == "5" && stair_tmp[i][0].substr(0, 1) == input_start.substr(0, 1)) {
+					middle5 = stair_tmp[i][0];
+					input_middle5_coordinate[0][0] = stof(stair_tmp[i][5]);
+					input_middle5_coordinate[0][1] = stof(stair_tmp[i][6]);
 					break;
 				}
 			}
