@@ -41,34 +41,34 @@ string check_lecture_room(string base){
 // *******************
 // Main
 // *******************
-int main(int argc, const char * argv[]) {
-    char inputStr[100];
-    fgets(inputStr, sizeof(inputStr), stdin);
-    string base(inputStr);
-    
-    ReplaceStringInPlace(base, "\t", "-");
-    int target_idx = base.find("-");
-    string first_base = base.substr(0,target_idx);
-    base = base.substr(target_idx+1,base.length()-target_idx);
-    target_idx = base.find("-");
-    string second_base = base.substr(0,target_idx);
-    string third_base = base.substr(target_idx+1,base.length()-target_idx);
-    
-    // first logic
-    cout << check_lecture_room(first_base) << "\n";
-    
-    // second logic
-    
-    // third logic
-    
-
-    cout <<"@@@" << "\n";
-    cout << first_base << "\n";
-    cout << second_base << "\n";
-    cout << third_base << "\n";
-    return 0;
-}
-
+//int main(int argc, const char * argv[]) {
+//    char inputStr[100];
+//    fgets(inputStr, sizeof(inputStr), stdin);
+//    string base(inputStr);
+//    
+//    ReplaceStringInPlace(base, "\t", "-");
+//    int target_idx = base.find("-");
+//    string first_base = base.substr(0,target_idx);
+//    base = base.substr(target_idx+1,base.length()-target_idx);
+//    target_idx = base.find("-");
+//    string second_base = base.substr(0,target_idx);
+//    string third_base = base.substr(target_idx+1,base.length()-target_idx);
+//    
+//    // first logic
+//    cout << check_lecture_room(first_base) << "\n";
+//    
+//    // second logic
+//    
+//    // third logic
+//    
+//
+//    cout <<"@@@" << "\n";
+//    cout << first_base << "\n";
+//    cout << second_base << "\n";
+//    cout << third_base << "\n";
+//    return 0;
+//}
+//
 
 
 
