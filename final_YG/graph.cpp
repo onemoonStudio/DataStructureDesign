@@ -1861,11 +1861,8 @@ void not_same_floor6(string start, string middle, string middle2, string middle3
 	path_tmp2.clear();
 
 	path3 = dijkstra_path(intersection_dist_storage_2(start, middle, intersection_node, list), list, 0, intersection_node.size() + 1);
-	cout << 'a';
 	path_tmp1 = dijkstra_path(intersection_dist_storage_10(middle2, middle3, intersection_node_2, list2), list2, 0, intersection_node_2.size() + 1);
-	cout << 'b';
 	path_tmp2 = dijkstra_path(intersection_dist_storage_7(finish, middle4, intersection_node_3, list3), list3, intersection_node_3.size() + 1, 0);
-	cout << 'c';
 	path3.push_back(make_pair(-1000, -1000));
 	path3.insert(path3.end(), path_tmp1.begin(), path_tmp1.end());
 	path3.push_back(make_pair(-1000, -1000));
@@ -2076,7 +2073,6 @@ int main() {
 	string inputString_b[2000];
 	string inputString_c[2000];
 	string inputString_d[2000];
-	vector<pair<float, float>> result_path;
 
 	ifstream intersection("intersection.csv");
 	ifstream classes("class.csv");
@@ -2242,12 +2238,12 @@ int main() {
 		}
 
 		//출발 -> 엘리베이터 -> 계단 -> 도착
-		/*else if (abs(stoi(input_start.substr(0, 1)) - stoi(input_finish.substr(0, 1))) % 2 == 1 && input_start.substr(0, 1) != "1") {
+		else if (abs(stoi(input_start.substr(0, 1)) - stoi(input_finish.substr(0, 1))) % 2 == 1 && input_start.substr(0, 1) != "1") {
 			floor_st.push_back(stoi(input_start.substr(0, 1)));
 			if (stoi(input_start.substr(0, 1)) - stoi(input_finish.substr(0, 1)) < 0) {
 				floor_st.push_back(stoi(input_finish.substr(0, 1)) - 1);
 			}
-			else floor_st.push_back(stoi(input_start.substr(0, 1)) + 1);
+			else floor_st.push_back(stoi(input_finish.substr(0, 1)) + 1);
 			floor_st.push_back(stoi(input_finish.substr(0, 1)));
 			float input_middle7_coordinate[1][2] = { 0 ,0 };
 			float input_middle8_coordinate[1][2] = { 0 ,0 };
@@ -2343,10 +2339,10 @@ int main() {
 				}
 			}
 			for (int i = 0; i < MAX_stair; i++) {
-				if (elevator_tmp[i][0].substr(2, 1) == "5" && elevator_tmp[i][0].substr(0, 1) == strr) {
-					middle11 = elevator_tmp[i][0];
-					input_middle11_coordinate[0][0] = stof(elevator_tmp[i][5]);
-					input_middle11_coordinate[0][1] = stof(elevator_tmp[i][6]);
+				if (stair_tmp[i][0].substr(2, 1) == "5" && stair_tmp[i][0].substr(0, 1) == strr) {
+					middle11 = stair_tmp[i][0];
+					input_middle11_coordinate[0][0] = stof(stair_tmp[i][5]);
+					input_middle11_coordinate[0][1] = stof(stair_tmp[i][6]);
 					break;
 				}
 			}
@@ -2361,25 +2357,17 @@ int main() {
 
 			not_same_floor4(input_start, middle1, middle2, middle7, middle8, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle1_coordinate, input_middle2_coordinate, input_middle7_coordinate, input_middle8_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
 			not_same_floor5(input_start, middle1, middle2, middle9, middle10, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle1_coordinate, input_middle2_coordinate, input_middle9_coordinate, input_middle10_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 2;
 			not_same_floor6(input_start, middle1, middle2, middle11, middle12, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle1_coordinate, input_middle2_coordinate, input_middle11_coordinate, input_middle12_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 3;
 			not_same_floor7(input_start, middle3, middle4, middle7, middle8, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle3_coordinate, input_middle4_coordinate, input_middle7_coordinate, input_middle8_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 4;
 			not_same_floor8(input_start, middle3, middle4, middle9, middle10, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle3_coordinate, input_middle4_coordinate, input_middle9_coordinate, input_middle10_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 5;
 			not_same_floor9(input_start, middle3, middle4, middle11, middle12, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle3_coordinate, input_middle4_coordinate, input_middle11_coordinate, input_middle12_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 6;
 			not_same_floor10(input_start, middle5, middle6, middle7, middle8, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle5_coordinate, input_middle6_coordinate, input_middle7_coordinate, input_middle8_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 7;
 			not_same_floor11(input_start, middle5, middle6, middle9, middle10, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle5_coordinate, input_middle6_coordinate, input_middle9_coordinate, input_middle10_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 8;
 			not_same_floor12(input_start, middle5, middle6, middle11, middle12, input_finish, intersection_coordinate_all[stoi(input_start.substr(0, 1)) - 1], intersection_coordinate_all[stoi(strr) - 1], intersection_coordinate_all[stoi(input_finish.substr(0, 1)) - 1], input_start_coordinate, input_middle5_coordinate, input_middle6_coordinate, input_middle11_coordinate, input_middle12_coordinate, input_finish_coordinate, intersection_node_all[stoi(input_start.substr(0, 1)) - 1], intersection_node_all[stoi(strr) - 1], intersection_node_all[stoi(input_finish.substr(0, 1)) - 1]);
-			cout << 9;
 
 			result_path = r_path(r_path(path, path2, path3, dist + tmp, dist2 + tmp, dist3 + tmp), r_path(path4, path5, path6, dist4 + tmp2, dist5 + tmp2, dist6 + tmp2), r_path(path7, path8, path9, dist7 + tmp3, dist8 + tmp3, dist9 + tmp3), r_dist(dist + tmp, dist2 + tmp, dist3 + tmp), r_dist(dist4 + tmp2, dist5 + tmp2, dist6 + tmp2), r_dist(dist7 + tmp3, dist8 + tmp3, dist9 + tmp3));
 			result_dist = r_dist(r_dist(dist + tmp, dist2 + tmp, dist3 + tmp), r_dist(dist4 + tmp2, dist5 + tmp2, dist6 + tmp2), r_dist(dist7 + tmp3, dist8 + tmp3, dist9 + tmp3));
-		}*/
+		}
 
 		//오직 엘리베이터만 이용할 때 & 두 층의 엘리베이터 좌표를 미리 저장 -> 나중에 사용
 		else {
@@ -2443,18 +2431,17 @@ int main() {
 			result_path = r_path(path, path3, path5, dist + tmp, dist3 + tmp2, dist5 + tmp3);
 			result_dist = r_dist(dist + tmp, dist3 + tmp2, dist5 + tmp3);
 		}
-
-		//출력
-		for (int i = 0; i < floor_st.size(); i++) {
-			cout << floor_st[i] << "층 -> ";//이동 층 벡터
-		}
-		cout << endl;
-		for (int i = 0; i < result_path.size(); i++) {
-			cout << result_path[i].first << ", " << result_path[i].second << " -> ";//이동 경로 좌표 벡터
-		}
-		cout << endl;
-		cout << result_dist << "초" << endl;//거리 벡터
 	}
+	//출력
+	for (int i = 0; i < floor_st.size(); i++) {
+		cout << floor_st[i] << "층 -> ";//이동 층 벡터
+	}
+	cout << endl;
+	for (int i = 0; i < result_path.size(); i++) {
+		cout << result_path[i].first << ", " << result_path[i].second << " -> ";//이동 경로 좌표 벡터
+	}
+	cout << endl;
+	cout << result_dist << "초" << endl;//거리 벡터
 
 	return 0;
 }
@@ -2463,3 +2450,7 @@ int main() {
 //그러면 세가지의 다른 경로가 나올텐데 그 세가지 중 가장 짧은 거리를 선택해 줬습니다.
 //이때 유동인구를 거리에 더해주는데 기본적으로 엘리베이터가 4개인 섹션은 유동인구/2를 해줬구요
 //그냥 단순히 거리에 유동인구를 더해줘서 시간+유동인구가 작은 쪽이 최적의 경로라고 선택했습니다. 근데 저거 시간 계산한거 이동수단 이용할 때 걸리는 시간은 추가 안해준 겁니다! 어떻게 더해줘야 할지 애매해서
+//*추가*
+//홀수에서 -> 짝수 층 , 짝수에서 -> 홀수 층 이동시 세가지 층을 고려(출발 층, 중간 층, 도착 층) ex) 3층 -> 8층일때 7층이 중간 층, 8층 -> 3층 일때 4층이 중간 층
+//중간층의 벡터는 무조건 엘리베이터 -> 교차점 -> 계단 이런식으로 구성(엘리베이터에서 내려서 계단으로 1층이동)
+//3층 -> 8층 이동 경우를 살펴보면 3층 출발 강의실 -> 3개중 하나의 엘리베이터 선택 -> 7층으로 이동 -> 7층에서 3개중 하나의 계단 선택 -> 도착층으로 이동 -> 8층 도착 강의실 ---> 9가지 경우의 수
