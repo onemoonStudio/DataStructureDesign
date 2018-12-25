@@ -157,12 +157,14 @@ int main() {
     
     
     
-//    for(int p=0;p <24;p++){
-//        for(int i=0;i <24;i++){
-//            cout << f5[p][i] <<" ";
-//        }
-//        cout << "\n";
-//    }
+    // 양 방향으로 만들어 줘야 한다.
+    for(int p=0;p <24;p++){
+        for(int i=0;i <24;i++){
+            cout << f5[p][i] <<" ";
+        }
+        cout << "\n";
+    }
+    
     
     
     
